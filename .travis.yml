@@ -10,7 +10,13 @@ before_install:
 - docker version
 - docker info
 script:
-- mvn clean verify -f alma-server/pom.xml -e
+  - cd alma-server/src/main/resources
+  - pwd
+  - npm install -g gulp
+  - npm install
+  - gulp minify
+  - cd ../../../../
+  - mvn clean verify -f alma-server/pom.xml -e
 after_success:
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
 - docker images

@@ -4,7 +4,6 @@
   "description": "Simple web application",
   "private": true,
   "scripts": {
-	"gulp":"gulp minify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
