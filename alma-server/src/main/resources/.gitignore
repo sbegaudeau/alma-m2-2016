@@ -1,0 +1,4 @@
+node_modules/
+*.min.js
+*.browserify.js
+checkstyle.xml
