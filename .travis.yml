@@ -1,22 +1,25 @@
 sudo: required
 services:
-  - docker
-
+- docker
 language: java
 jdk: oraclejdk8
-
 branches:
   only:
-    - master
-
+  - master
 before_install:
-  - docker version
-  - docker info
-
+- docker version
+- docker info
 script:
-  - mvn clean verify -f alma-server/pom.xml -e
-
+- mvn clean verify -f alma-server/pom.xml -e
 after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker images
-  - docker push latealma/alma-server:latest
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker images
+- docker push latealma/alma-server:latest
+deploy:
+  provider: releases
+  api_key:
+    secure: gvHUJTm3qB0Zoy1BbFVib3rTS4V3O3W0WBIEJwLd4puzbDuZeRBP5ZcpYjmjbojeEaN2U+o11V3SbZ/MJK80ERwS1Sf7bAvqqA7jwGQzyo9TizO87wmuz719+misDCG/umrt109aGxs09FFvY32+7sHrEQRdqw98Ix0FaTD+LsQBm35b7qvLgp1EM6q0mZAKgrnRCernrWLOxPd6NSDSJBOaXejVgUnCivJx+kc1JmaysnLK2t1vUVLa24/RpU7j1+Sn1zTeu3CHMTYt/5XIngefN6XQE1YE0n1+jOHURTzenYc+IK2EK8T8oZDqPOThB+nawRANzsugDCeGbu+fz7tX57oqZZnCm7BXFost4ASpvLVU4y5/4gI4MtstzZnYPYR5t1n/kcmoZ2+iz+SkFg8MxgcmQtXhAFyL8lw7VkFrRbJRV1i4iwwCVp7O0Jg9LEz+7NQ43eyULQPe/dYxMfddL8V2jtMaBuE27gH0A+GNmGRzZ5xFTU9o5YlSGNyueD4KW5ZfXW8uj3h+ZpxuiY8MGVKucr0TuCaGwAyC5QXoc8Bh9PBHG7f9nv2PNFtV92PtQtJJI0Sn6TiBHy1vFp6T6lT1FMFEJbPY1ZuLmOSzM6XpV4OHSgl+EgkjgVdLGSNBu58RjPBxRuLqWfWaQ7xmcvgxW9mFB+6ex3F0Y7c=
+  file: toto
+  skip_cleanup: true
+  on:
+    tags: true
