@@ -23,7 +23,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>Thaologie</docker.image.prefix>
+        <docker.image.prefix>thaologie</docker.image.prefix>
     </properties>
 
     
@@ -53,8 +53,8 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
-                            <image>Thaologie/alma-server:${project.version}</image>
-                            <newName>hub.docker.com/Thaologie/alma-server:${project.version}</newName>
+                            <image>thaologie/alma-server:${project.version}</image>
+                            <newName>hub.docker.com/thaologie/alma-server:${project.version}</newName>
                         </configuration>
                     </execution>
                 </executions>
