@@ -23,9 +23,10 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <docker.image.prefix>Thaologie</docker.image.prefix>
     </properties>
 
-    <docker.image.prefix>Thaologie</docker.image.prefix>
+    
 
     <build>
         <plugins>
