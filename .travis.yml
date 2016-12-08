@@ -23,7 +23,8 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: secure: SWTCSfhXcwADnnhxDrAgH0xfFL673NtB/e97cSU027pxoRM8mbiZjTc9KjaMypqhohBNJ8TUaNOlegLSvM6I41dIRbJvDJkOwqe62gJL9ga6cyHI3WgYZBBCF8nXvopYoBGpyzUWYZVSwTLkXwMSWUH0nJo$
+  api_key: 
+    secure: SWTCSfhXcwADnnhxDrAgH0xfFL673NtB/e97cSU027pxoRM8mbiZjTc9KjaMypqhohBNJ8TUaNOlegLSvM6I41dIRbJvDJkOwqe62gJL9ga6cyHI3WgYZBBCF8nXvopYoBGpyzUWYZVSwTLkXwMSWUH0nJo$
   file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
   skip_cleanup: true
   on:
