@@ -20,3 +20,13 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push thaologie/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key: secure: SWTCSfhXcwADnnhxDrAgH0xfFL673NtB/e97cSU027pxoRM8mbiZjTc9KjaMypqhohBNJ8TUaNOlegLSvM6I41dIRbJvDJkOwqe62gJL9ga6cyHI3WgYZBBCF8nXvopYoBGpyzUWYZVSwTLkXwMSWUH0nJo$
+  file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
+  skip_cleanup: true
+  on:
+    repo: Thaologie/alma-m2-2016
+    tags: true
+  overwrite: true
