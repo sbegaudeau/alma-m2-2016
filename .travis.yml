@@ -10,8 +10,6 @@ branches:
     - master
 
 before_install:
-  - docker version
-  - docker info
   - node --version
   - npm --version
 
@@ -23,11 +21,6 @@ script:
   - gulp minify
   - cd ../../../
   - mvn clean verify -f pom.xml -e
-
-after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker images
-  - docker push tokyomotel/alma-server:latest
   
 deploy:
   provider: releases
