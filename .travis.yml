@@ -16,13 +16,13 @@ before_install:
   - npm --version
 
 script:
-  - cd alma-server/src/main/resources
+  - cd src/main/resources
   - pwd
   - npm install -g gulp
   - npm install
   - gulp minify
-  - cd ../../../../
-  - mvn clean verify -f alma-server/pom.xml -e
+  - cd ../../../
+  - mvn clean verify -f pom.xml -e
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
