@@ -20,3 +20,11 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push githubetes/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key: $ACCESS_TOKEN
+  file: "README.md"
+  skip_cleanup: true
+  on:
+    tags: true
