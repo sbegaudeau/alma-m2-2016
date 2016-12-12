@@ -1,0 +1,25 @@
+sudo: required
+services:
+  - docker
+
+language: java
+jdk: oraclejdk8
+
+branches:
+  only:
+    - master
+
+before_install:
+  - node --version
+  - npm --version
+
+script:
+  - mvn clean verify -e
+
+deploy:
+  provider: releases
+  api_key: $ACCESS_TOKEN
+  file: "README.md"
+  skip_cleanup: true
+  on:
+    tags: true

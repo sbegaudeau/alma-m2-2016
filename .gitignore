@@ -1,0 +1,6 @@
+.idea/*
+## This is the kind of files that we want to ignore
+bin
+target
+*.class
+*.jar
