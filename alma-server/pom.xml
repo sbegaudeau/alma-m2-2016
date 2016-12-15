@@ -23,7 +23,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>Fungenieurs</docker.image.prefix>
+        <docker.image.prefix>fungenieurs</docker.image.prefix>
     </properties>
 
 
@@ -52,8 +52,8 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
-                            <image>Fungenieurs/alma-server:${project.version}</image>
-                            <newName>hub.docker.com/Fungenieurs/alma-server:${project.version}</newName>
+                            <image>fungenieurs/alma-server:${project.version}</image>
+                            <newName>hub.docker.com/fungenieurs/alma-server:${project.version}</newName>
                         </configuration>
                     </execution>
                 </executions>
