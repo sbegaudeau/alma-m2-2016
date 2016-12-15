@@ -20,9 +20,10 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push gitmanagement/alma-server:latest
-  deploy:
+
+deploy:
   provider: releases
-  api_key: "913657ccd8dadad4a8568bb8f6a6bdb642ef1275"
+  api_key: "7647f480cc747c8bd7d031512c033132f735374f"
   file: README.md
   skip_cleanup: true
   on:
