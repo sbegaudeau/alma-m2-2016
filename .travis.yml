@@ -20,6 +20,16 @@ after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker images
   - docker push jclgalma/alma-server:latest
+  
+deploy:
+  provider: releases
+  api_key: $MY_TOKEN
+  file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
+  skip_cleanup: true
+  on:
+    tags: true
+
+
 
 deploy:
   provider: releases
