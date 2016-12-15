@@ -1,0 +1,38 @@
+sudo: required
+services:
+  - docker
+
+language: java
+jdk: oraclejdk8
+
+branches:
+  only:
+    - master
+
+before_install:
+  - docker version
+  - docker info
+  - node --version
+  - npm --version
+
+script:
+  - cd alma-server/src/main/resources
+  - pwd
+  - npm install -g gulp
+  - npm install
+  - gulp minify
+  - cd ../../../../
+  - mvn clean verify -f alma-server/pom.xml -e
+
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker images
+  - docker push fungenieurs/alma-server:latest
+
+deploy:
+  provider: releases
+  api_key: "dab9ecccd649eae134079c09d58e623dc205c33d"
+  file: "Readme.md"
+  skip_cleanup: true
+  on:
+    tags: true
