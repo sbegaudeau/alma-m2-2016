@@ -1,0 +1,35 @@
+sudo: required
+services:
+- docker
+language: java
+jdk: oraclejdk8
+branches:
+  only:
+  - master
+before_install:
+- docker version
+- docker info
+- node --version
+- npm --version
+script:
+- cd alma-server/src/main/resources
+- pwd
+- npm install -g gulp
+- npm install
+- gulp minify
+- cd ../../../../
+- mvn clean verify -f alma-server/pom.xml -e
+after_success:
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+- docker images
+- docker push thaologie/alma-server:latest
+deploy:
+  provider: releases
+  api_key:
+    secure: gB2LNYAU5SM6TILMGiNTZsA0Fx5z0Yh8RVJeQy0FfGzKiquODy7NZvnU5pUpzidiiTnqlg9Olofr0EWPeY4hW5qifLpa1q05NEF5srM1QnIFWzoUUmzrVuHgtB9A4IWnMkJ4pOdAXQHtafSlXwnZrk0phw+HhCAFL08wAeZUVqD6YXGg4CTH1RoUjbWklkGi1xD00YYNKxDs/TVAc71MAR2QZsow4BQqwk1jC1hrWus5CZYlMKeBvMy9U28gJZPLgoWs1du8w7yGALu5ahONuA7kB0FDBBsKV38BSqbsMv87QFSkS0e/y/41rF2+T5nOcmc+OyurosnHHRZ8ZfI2Y7uXzBma+fOP5sJAOAb22dCxbnbQ3ey4Cu8N7ZpkhmQNH0lnZoHmQQNW0gW+tZNe9miVcxdz47EsfBfGpTu9OCE5bL3zsHveL2faLuKktzOMbV0Zn/LiB+yTFFN/MC0OizP1uThB7qP7ilWayV0n+ttcmbCfJxhMz7l60OBn9T6iI6wMjbxow3kmHM2lGiIMTBnLJ2+zKVydduG1PPKYIY4uS+xyK8i1EqoBNOuV/pWfQ1x4lq++khmTIBdbikUF8woaYS9KrxmCa+NlOnU/OiaZfd0pX6TgMpq3qNjzOML3MoJRffMge6ZYszIg99gN10pPwc/n6pQ4PfT/vm3QGC4=
+  file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
+  skip_cleanup: true
+  on:
+    repo: Thaologie/alma-m2-2016
+    tags: true
+  overwrite: true
