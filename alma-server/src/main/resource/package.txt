@@ -13,7 +13,7 @@
   "keywords": [
     "alma"
   ],
-  "author": "Stéphane Bégaudeau",
+  "author": "StÃ©phane BÃ©gaudeau",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ORGANISATION_NAME/alma-m2-2016/issues"
