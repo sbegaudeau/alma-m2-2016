@@ -1,9 +1,17 @@
+sudo: required
+services:
+  - docker
+
 language: java
 jdk: oraclejdk8
 
+branches:
+  only:
+    - master
+
+before_install:
+  - docker version
+  - docker info
+
 script:
   - mvn clean verify -f alma-server/pom.xml -e
-
-DOCKER_EMAIL: rata_ntely@yahoo.fr
-DOCKER_USER: HMTALMA2016
-DOCKER_PASSWORD: alma2016
