@@ -23,7 +23,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-		<docker.image.prefix>HMTALMA2016</docker.image.prefix>
+		<docker.image.prefix>hmtalma</docker.image.prefix>
     </properties>
 	
 
@@ -52,8 +52,8 @@
                             <goal>tag</goal>
                         </goals>
                         <configuration>
-                            <image>HMTALMA2016/alma-server:${project.version}</image>
-                            <newName>hub.docker.com/HMTALMA2016/alma-server:${project.version}</newName>
+                            <image>hmtalma/alma-server:${project.version}</image>
+                            <newName>hub.docker.com/hmtalma/alma-server:${project.version}</newName>
                         </configuration>
                     </execution>
                 </executions>
