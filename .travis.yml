@@ -21,12 +21,10 @@ after_success:
   - docker images
   - docker push hmtalma/alma-server:latest
 
-  deploy:
-    provider: releases
-    api_key: $API_KEY
-    file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
-    skip_cleanup: true
-    on:
-      tags: true
-      repo: hmtalma/alma-m2-2016
-      overwrite: true
+deploy:
+  provider: releases
+  api_key: $API_KEY
+  file: alma-server/target/alma-server-1.0.0-SNAPSHOT.jar
+  skip_cleanup: true
+  on:
+    tags: true
