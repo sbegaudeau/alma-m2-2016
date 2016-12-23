@@ -3,3 +3,7 @@ jdk: oraclejdk8
 
 script:
   - mvn clean verify -f alma-server/pom.xml -e
+
+DOCKER_EMAIL: rata_ntely@yahoo.fr
+DOCKER_USER: HMTALMA2016
+DOCKER_PASSWORD: alma2016
